@@ -217,7 +217,7 @@ class TVGardenMain(Screen):
         self["key_blue"] = StaticText(_("Settings"))
         self["status"] = StaticText("TV Garden %s | Ready" % PLUGIN_VERSION)
         self['title'] = StaticText(
-            "TV Garden %s | by Lululla" %
+            "TV Garden %s | by speedy005" %
             PLUGIN_VERSION)
         self["actions"] = ActionMap(["OkCancelActions", "ColorActions"], {
             "cancel": self.exit,
