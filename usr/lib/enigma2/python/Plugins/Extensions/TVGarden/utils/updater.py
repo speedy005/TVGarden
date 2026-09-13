@@ -15,6 +15,7 @@ Installer:
 import time
 import shutil
 import subprocess
+import os
 
 from re import sub, search
 from os import makedirs
@@ -36,10 +37,8 @@ class PluginUpdater:
     REPO_NAME = "TVGarden"
     REPO_BRANCH = "master"
 
-    # GitHub URLs
     RAW_CONTENT = "https://raw.githubusercontent.com"
 
-    # Installer URL
     INSTALLER_URL = (
         "%s/%s/%s/refs/heads/%s/installer.sh"
         % (
@@ -50,7 +49,6 @@ class PluginUpdater:
         )
     )
 
-    # Repository URL
     REPO_URL = (
         "https://github.com/%s/%s"
         % (
@@ -59,8 +57,13 @@ class PluginUpdater:
         )
     )
 
-    # Backup directory
     BACKUP_DIR = "/tmp/tvgarden_backup"
+
+    INSTALLER_PATH = "/tmp/tvgarden-installer.sh"
+
+    # ==========================================================
+    # Init
+    # ==========================================================
 
     def __init__(self):
         self.current_version = str(PLUGIN_VERSION)
@@ -85,7 +88,6 @@ class PluginUpdater:
             module="Updater"
         )
 
-        # Create backup directory
         try:
             if not exists(self.BACKUP_DIR):
                 makedirs(
@@ -104,26 +106,14 @@ class PluginUpdater:
     # ==========================================================
 
     def get_latest_version(self):
-        """
-        Get latest version from installer.sh.
-
-        Expected format:
-
-            version='2.7'
-
-        or:
-
-            version="2.7"
-        """
+        """Get latest version from installer.sh."""
 
         response = None
 
         try:
-            installer_url = self.INSTALLER_URL
-
             log.debug(
                 "Checking version from: %s"
-                % installer_url,
+                % self.INSTALLER_URL,
                 module="Updater"
             )
 
@@ -132,7 +122,7 @@ class PluginUpdater:
             }
 
             request = Request(
-                installer_url,
+                self.INSTALLER_URL,
                 headers=headers
             )
 
@@ -164,10 +154,6 @@ class PluginUpdater:
                 module="Updater"
             )
 
-            # --------------------------------------------------
-            # Version patterns
-            # --------------------------------------------------
-
             patterns = [
                 r"^\s*version\s*=\s*['\"]([0-9]+(?:\.[0-9]+)+)['\"]",
                 r"^\s*VERSION\s*=\s*['\"]([0-9]+(?:\.[0-9]+)+)['\"]",
@@ -194,10 +180,6 @@ class PluginUpdater:
                     )
 
                     return version
-
-            # --------------------------------------------------
-            # Fallback
-            # --------------------------------------------------
 
             log.warning(
                 "No explicit version pattern found in installer.sh",
@@ -252,14 +234,7 @@ class PluginUpdater:
     # ==========================================================
 
     def compare_versions(self, v1, v2):
-        """
-        Compare version strings.
-
-        Returns:
-            1  = v1 is newer
-            0  = equal
-           -1  = v1 is older
-        """
+        """Compare version strings."""
 
         try:
 
@@ -330,7 +305,7 @@ class PluginUpdater:
             return 0
 
     # ==========================================================
-    # Check for update
+    # Check update
     # ==========================================================
 
     def check_update(self, callback=None):
@@ -405,7 +380,7 @@ class PluginUpdater:
     # ==========================================================
 
     def download_update(self, callback=None):
-        """Create backup and install the latest TVGarden version."""
+        """Create backup and install latest TVGarden version."""
 
         log.info(
             "Starting TVGarden update process...",
@@ -418,7 +393,7 @@ class PluginUpdater:
         try:
 
             # --------------------------------------------------
-            # Step 1 - Backup
+            # Backup
             # --------------------------------------------------
 
             log.info(
@@ -441,7 +416,7 @@ class PluginUpdater:
                 return
 
             # --------------------------------------------------
-            # Step 2 - Download and run installer
+            # Installer
             # --------------------------------------------------
 
             log.info(
@@ -463,10 +438,6 @@ class PluginUpdater:
                 )
 
             else:
-
-                # --------------------------------------------------
-                # Step 3 - Restore backup
-                # --------------------------------------------------
 
                 log.error(
                     "Installer failed. Restoring backup...",
@@ -509,21 +480,18 @@ class PluginUpdater:
             )
 
     # ==========================================================
-    # Download and execute installer
+    # Execute installer
     # ==========================================================
 
     def download_and_run_installer(self):
         """
-        Download installer.sh from speedy005/TVGarden
-        and execute it locally.
+        Download installer.sh and execute it.
 
-        This avoids:
-            wget ... | /bin/sh
-
-        so the installer can be checked before execution.
+        Installer stdout/stderr is captured and written
+        to the TVGarden log.
         """
 
-        installer_path = "/tmp/tvgarden-installer.sh"
+        installer_path = self.INSTALLER_PATH
 
         try:
 
@@ -538,16 +506,25 @@ class PluginUpdater:
                 module="Updater"
             )
 
+            # --------------------------------------------------
             # Remove old installer
+            # --------------------------------------------------
+
             try:
+
                 if exists(installer_path):
-                    import os
                     os.remove(installer_path)
-            except Exception:
-                pass
+
+            except Exception as e:
+
+                log.warning(
+                    "Could not remove old installer: %s"
+                    % e,
+                    module="Updater"
+                )
 
             # --------------------------------------------------
-            # Download
+            # Download installer
             # --------------------------------------------------
 
             cmd = (
@@ -581,7 +558,7 @@ class PluginUpdater:
                 return False
 
             # --------------------------------------------------
-            # Verify file
+            # Verify downloaded installer
             # --------------------------------------------------
 
             if not exists(installer_path):
@@ -612,11 +589,13 @@ class PluginUpdater:
 
                 return False
 
-            if len(installer_data) < 100:
+            installer_size = len(installer_data)
+
+            if installer_size < 100:
 
                 log.error(
                     "Downloaded installer is too small: %d bytes"
-                    % len(installer_data),
+                    % installer_size,
                     module="Updater"
                 )
 
@@ -624,28 +603,61 @@ class PluginUpdater:
 
             log.info(
                 "Installer downloaded: %d bytes"
-                % len(installer_data),
+                % installer_size,
                 module="Updater"
             )
 
             # --------------------------------------------------
-            # Basic shell-script validation
+            # Validate shell script
             # --------------------------------------------------
 
+            header = installer_data[:512]
+
             if (
-                b"#!/bin/sh" not in installer_data[:512]
+                b"#!/bin/bash" not in header
                 and
-                b"#!/bin/bash" not in installer_data[:512]
+                b"#!/bin/sh" not in header
             ):
 
                 log.warning(
-                    "Downloaded file does not contain "
-                    "a shell script header",
+                    "Installer does not contain a valid shell "
+                    "shebang",
                     module="Updater"
                 )
 
             # --------------------------------------------------
-            # Execute
+            # Determine shell
+            # --------------------------------------------------
+
+            if exists("/bin/bash"):
+
+                shell_bin = "/bin/bash"
+
+                log.debug(
+                    "Using installer interpreter: /bin/bash",
+                    module="Updater"
+                )
+
+            elif exists("/usr/bin/bash"):
+
+                shell_bin = "/usr/bin/bash"
+
+                log.debug(
+                    "Using installer interpreter: /usr/bin/bash",
+                    module="Updater"
+                )
+
+            else:
+
+                shell_bin = "/bin/sh"
+
+                log.debug(
+                    "bash not found, using /bin/sh",
+                    module="Updater"
+                )
+
+            # --------------------------------------------------
+            # Execute installer
             # --------------------------------------------------
 
             log.info(
@@ -653,17 +665,61 @@ class PluginUpdater:
                 module="Updater"
             )
 
-            command = (
-                '/bin/sh "%s"'
-                % installer_path
+            command = [
+                shell_bin,
+                installer_path
+            ]
+
+            log.debug(
+                "Installer command: %s"
+                % " ".join(command),
+                module="Updater"
             )
 
-            result = subprocess.call(
+            process = subprocess.Popen(
                 command,
-                shell=True
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                universal_newlines=True,
+                bufsize=1
             )
 
-            if result == 0:
+            # --------------------------------------------------
+            # Capture installer output
+            # --------------------------------------------------
+
+            output_lines = []
+
+            while True:
+
+                line = process.stdout.readline()
+
+                if not line:
+                    break
+
+                line = line.rstrip()
+
+                if not line:
+                    continue
+
+                output_lines.append(line)
+
+                # Write every installer line to TVGarden log
+                log.info(
+                    "[Installer] %s"
+                    % line,
+                    module="Updater"
+                )
+
+            process.stdout.close()
+
+            return_code = process.wait()
+
+            # --------------------------------------------------
+            # Installer result
+            # --------------------------------------------------
+
+            if return_code == 0:
 
                 log.info(
                     "TVGarden installer completed successfully",
@@ -674,9 +730,39 @@ class PluginUpdater:
 
             log.error(
                 "TVGarden installer failed with exit code: %d"
-                % result,
+                % return_code,
                 module="Updater"
             )
+
+            # --------------------------------------------------
+            # Print useful summary
+            # --------------------------------------------------
+
+            if output_lines:
+
+                log.error(
+                    "Installer produced %d output lines"
+                    % len(output_lines),
+                    module="Updater"
+                )
+
+                # Last 10 lines are particularly useful
+                last_lines = output_lines[-10:]
+
+                for line in last_lines:
+
+                    log.error(
+                        "[Installer last] %s"
+                        % line,
+                        module="Updater"
+                    )
+
+            else:
+
+                log.error(
+                    "Installer produced no output",
+                    module="Updater"
+                )
 
             return False
 
@@ -693,14 +779,12 @@ class PluginUpdater:
         finally:
 
             # --------------------------------------------------
-            # Cleanup
+            # Remove temporary installer
             # --------------------------------------------------
 
             try:
 
                 if exists(installer_path):
-
-                    import os
 
                     os.remove(
                         installer_path
@@ -793,10 +877,12 @@ class PluginUpdater:
         try:
 
             if not self.backup_path:
+
                 log.error(
                     "No backup path available",
                     module="Updater"
                 )
+
                 return False
 
             if not exists(self.backup_path):
@@ -852,4 +938,3 @@ def perform_update(callback=None):
     return updater.download_update(
         callback
     )
-
