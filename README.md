@@ -1,15 +1,15 @@
 <h1 align="center">📺 TV Garden Plugin for Enigma2</h1>
 
-[![Version](https://img.shields.io/badge/Version-2.6-blue.svg)](https://github.com/Belfagor2005/TVGarden)
+[![Version](https://img.shields.io/badge/Version-2.6-blue.svg)](https://github.com/speedy005/TVGarden)
 [![Enigma2](https://img.shields.io/badge/Enigma2-Plugin-ff6600.svg)](https://www.enigma2.net)
 [![Python](https://img.shields.io/badge/Python-2.7%2B-blue.svg)](https://www.python.org)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Python package](https://github.com/Belfagor2005/TVGarden/actions/workflows/pylint.yml/badge.svg)](https://github.com/Belfagor2005/TVGarden/actions/workflows/pylint.yml)
-[![Ruff Status](https://github.com/Belfagor2005/TVGarden/actions/workflows/ruff.yml/badge.svg)](https://github.com/Belfagor2005/TVGarden/actions/workflows/ruff.yml)
+[![Python package](https://github.com/speedy005/TVGarden/actions/workflows/pylint.yml/badge.svg)](https://github.com/speedy005/TVGarden/actions/workflows/pylint.yml)
+[![Ruff Status](https://github.com/speedy005/TVGarden/actions/workflows/ruff.yml/badge.svg)](https://github.com/speedy005/TVGarden/actions/workflows/ruff.yml)
 
-[![Visitors](https://komarev.com/ghpvc/?username=Belfagor2005&label=Repository%20Views&color=blueviolet)](https://github.com/Belfagor2005)
+[![Visitors](https://komarev.com/ghpvc/?username=speedy005&label=Repository%20Views&color=blueviolet)](https://github.com/speedy005)
 [![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://ko-fi.com/lululla)
-[![Donate](https://img.shields.io/badge/_-Donate-green.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://paypal.me/belfagor2005)
+[![Donate](https://img.shields.io/badge/_-Donate-green.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://paypal.me/speedy005)
 
 <img src="https://play-lh.googleusercontent.com/TuMoS5RrGwz6xmyyYkA56eXukRHNNd2JgldA0wpzVFxiQDAAf9NLuKkTacl29_ltEbr4YvshNOauntxGlrvb=w240-h480-rw" alt="Icon image">
 
@@ -22,24 +22,24 @@
 <table>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/screen/screen1.png" height="220">
+      <img src="https://raw.githubusercontent.com/speedy005/TVGarden/master/screen/screen1.png" height="220">
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/screen/screen2.png" height="220">
+      <img src="https://raw.githubusercontent.com/speedy005/TVGarden/master/screen/screen2.png" height="220">
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/screen/screen3.png" height="220">
+      <img src="https://raw.githubusercontent.com/speedy005/TVGarden/master/screen/screen3.png" height="220">
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/screen/screen4.png" height="220">
+      <img src="https://raw.githubusercontent.com/speedy005/TVGarden/master/screen/screen4.png" height="220">
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/screen/screen5.png" height="220">
+      <img src="https://raw.githubusercontent.com/speedy005/TVGarden/master/screen/screen5.png" height="220">
     </td>
     <td align="center">
-      <img src="https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/screen/screen6.png" height="220">
+      <img src="https://raw.githubusercontent.com/speedy005/TVGarden/master/screen/screen6.png" height="220">
     </td>
   </tr>
 </table>
@@ -227,7 +227,7 @@ EXIT            - Close player
 
 ```bash
 # Download and install via script (Recommended)
-wget -q --no-check-certificate "https://raw.githubusercontent.com/Belfagor2005/TVGarden/main/installer.sh" -O - | /bin/sh
+wget -q --no-check-certificate "https://raw.githubusercontent.com/speedy005/TVGarden/master/installer.sh" -O - | /bin/sh
 
 # Restart Enigma2
 reboot
@@ -349,7 +349,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ### Core Development
 - **Original Concept**: Lululla (TV Garden Project)
-- **Data Source**: [https://github.com/Belfagor2005/famelack-data](https://github.com/Belfagor2005/famelack-data)
+- **Data Source**: [https://github.com/speedy005/famelack-data](https://github.com/speedy005/famelack-data)
 - **Plugin Development**: TV Garden Development Team
 - **Hierarchical Export**: Inspired by Vavoo Plugin architecture
 
@@ -362,8 +362,8 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 ## 📞 Support & Resources
 
 ### Documentation & Support
-- **GitHub Issues**: [Report bugs/request features](https://github.com/Belfagor2005/TVGarden/issues)
-- **Releases**: [Latest versions and changelog](https://github.com/Belfagor2005/TVGarden/releases)
+- **GitHub Issues**: [Report bugs/request features](https://github.com/speedy005/TVGarden/issues)
+- **Releases**: [Latest versions and changelog](https://github.com/speedy005/TVGarden/releases)
 
 **Enjoy optimized streaming with TV Garden!** 📺⚡
 
