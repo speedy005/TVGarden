@@ -5,12 +5,12 @@
 ###########################################################
 #                                                         #
 #  TV Garden Plugin for Enigma2                           #
-#  Created by Enigma2 Developer speedy005                  #
+#  Created by Enigma2 Developer Lulualla                  #
 #  Based on TV Garden Project by Lululla                  #
-#  Data Source: speedy005 fork                         #
+#  Data Source: Belfagor2005 fork                         #
 #                                                         #
 #  Repository:                                            #
-#  https://github.com/speedy005/tv-garden-channel-list #
+#  https://github.com/Belfagor2005/tv-garden-channel-list #
 #                                                         #
 #  PLUGIN FEATURES:                                       #
 #  • Global: 150+ countries with flags                    #
@@ -96,7 +96,7 @@
 #                                                         #
 #  CREDITS & THANKS:                                      #
 #  • Original TV Garden concept: Lululla                  #
-#  • Repository fork & maintenance: speedy005          #
+#  • Repository fork & maintenance: Belfagor2005          #
 #  • Plugin development: TV Garden Team                   #
 #  • Performance optimization: Recent updates             #
 #  • Enigma2 community for testing & feedback             #
@@ -387,30 +387,42 @@ class TVGardenMain(Screen):
 
 
 def menu(menuid, **kwargs):
-    """Plugin menu integration"""
+    """Add TV Garden to Enigma2 main menu."""
     if menuid == "mainmenu":
-        return [(_("TV Garden"), main, "tv_garden", 46)]
+        return [
+            ("TV Garden", main, "TVGarden_mainmenu", 50)
+        ]
     return []
 
 
 def main(session, **kwargs):
+    """Open TV Garden main screen."""
     try:
         return session.open(TVGardenMain)
+
     except Exception as e:
         import traceback
         import time
 
         try:
             from .helpers import log
-            log.error("TVGarden Crash: %s" % str(e), module="Main")
-            log.error(traceback.format_exc(), module="Main")
+
+            log.error(
+                "TVGarden Crash: %s" % str(e),
+                module="Main"
+            )
+            log.error(
+                traceback.format_exc(),
+                module="Main"
+            )
+
         except ImportError:
-            # Fallback se log non è disponibile
             print("[TVGarden CRASH]: %s" % str(e))
             traceback.print_exc()
 
-        # Scrivi sempre il crash log
+        # Always write crash log
         log_path = "/tmp/tvgarden_crash.log"
+
         try:
             with open(log_path, "a") as f:
                 f.write("=" * 50 + "\n")
@@ -419,6 +431,7 @@ def main(session, **kwargs):
                 f.write(str(e) + "\n")
                 f.write(traceback.format_exc())
                 f.write("\n" + "=" * 50 + "\n")
+
         except BaseException:
             pass
 
@@ -426,36 +439,65 @@ def main(session, **kwargs):
 
 
 def Plugins(**kwargs):
-    """Plugin descriptor list"""
+    """TV Garden plugin descriptors."""
+
     from Plugins.Plugin import PluginDescriptor
+
+    # ---------------------------------------------------------
+    # Logging
+    # ---------------------------------------------------------
     try:
         from .utils.config import get_config
+
         config = get_config()
+
         log_level = config.get("log_level", "INFO")
         log_to_file = config.get("log_to_file", True)
 
         from .helpers import log
+
         log.set_level(log_level)
         log.enable_file_logging(log_to_file)
-        log.info("TV Garden Plugin started", "Main")
+
+        log.info(
+            "TV Garden Plugin started",
+            "Main"
+        )
 
     except Exception as e:
-        print("[TVGarden] Plugin loading - log init failed: %s" % str(e))
+        print(
+            "[TVGarden] Plugin loading - log init failed: %s"
+            % str(e)
+        )
 
-    description = _("Access free IPTV channels from around the world")
+    description = _(
+        "Access free IPTV channels from around the world"
+    )
+
+    # ---------------------------------------------------------
+    # Plugin menu + Extensions menu
+    # ---------------------------------------------------------
     plugin_descriptor = PluginDescriptor(
         name="TV Garden",
         description=description,
-        where=PluginDescriptor.WHERE_PLUGINMENU,
         icon=PLUGIN_ICON,
+        where=[
+            PluginDescriptor.WHERE_EXTENSIONSMENU,
+            PluginDescriptor.WHERE_PLUGINMENU
+        ],
         fnc=main
     )
 
-    extensions_descriptor = PluginDescriptor(
-        name="TV Garden",
-        description=description,
-        where=PluginDescriptor.WHERE_EXTENSIONSMENU,
-        fnc=main
+    # ---------------------------------------------------------
+    # Main menu
+    # ---------------------------------------------------------
+    mainmenu_descriptor = PluginDescriptor(
+        where=PluginDescriptor.WHERE_MENU,
+        fnc=menu
     )
 
-    return [plugin_descriptor, extensions_descriptor]
+    return [
+        plugin_descriptor,
+        mainmenu_descriptor
+    ]
+
