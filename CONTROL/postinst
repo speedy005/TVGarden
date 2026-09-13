@@ -1,0 +1,78 @@
+#!/bin/sh
+# postinst script for TV Garden Plugin
+# This script runs AFTER package files are unpacked
+
+echo "=== TV Garden Plugin Post-Installation ==="
+
+TVGARDEN_DIR="/usr/lib/enigma2/python/Plugins/Extensions/TVGarden"
+LOCALE_DIR="/usr/lib/enigma2/python/Plugins/Extensions/TVGarden/locale"
+ICONS_DIR="/usr/lib/enigma2/python/Plugins/Extensions/TVGarden/icons"
+CACHE_DIR="/tmp/tvgarden_cache"
+
+# 1. Imposta permessi corretti
+echo "Setting correct permissions..."
+chmod -R 755 "$TVGARDEN_DIR"
+chown -R root:root "$TVGARDEN_DIR"
+
+if [ -d "$LOCALE_DIR" ]; then
+    echo "Compiling language files..."
+    for lang_dir in "$LOCALE_DIR"/*/; do
+        if [ -d "$lang_dir" ]; then
+            lang=$(basename "$lang_dir")
+            msgfmt -o "/usr/lib/enigma2/python/Plugins/Extensions/TVGarden/locale/$lang/LC_MESSAGES/tvgarden.mo" \
+                   "$LOCALE_DIR/$lang/LC_MESSAGES/tvgarden.po" 2>/dev/null || true
+        fi
+    done
+fi
+
+echo "Creating cache directories..."
+mkdir -p "$CACHE_DIR"
+mkdir -p "/etc/enigma2/tvgarden/favorites"
+chmod 777 "$CACHE_DIR"
+
+echo "Setting up skins..."
+SKINS_DIR="/usr/share/enigma2"
+if [ -d "$TVGARDEN_DIR/skins" ]; then
+    for skin in "$TVGARDEN_DIR/skins"/*/; do
+        skin_name=$(basename "$skin")
+        ln -sf "$skin" "$SKINS_DIR/TVGarden_$skin_name" 2>/dev/null || true
+    done
+fi
+
+echo "Updating plugin registry..."
+if [ -f /usr/lib/enigma2/python/Plugins/Extensions/TVGarden/plugin.py ]; then
+    python3 -c "
+import sys
+sys.path.insert(0, '/usr/lib/enigma2/python/Plugins')
+from Plugins.Plugin import PluginDescriptor
+import os
+plugin_path = '/usr/lib/enigma2/python/Plugins/Extensions/TVGarden'
+if os.path.exists(plugin_path):
+    print('Plugin registered successfully')
+" 2>/dev/null || true
+fi
+
+BACKUP_PATTERN="/tmp/tvgarden_backup_*"
+LATEST_BACKUP=$(ls -td $BACKUP_PATTERN 2>/dev/null | head -1)
+if [ -n "$LATEST_BACKUP" ] && [ -d "$LATEST_BACKUP" ]; then
+    echo "Restoring configuration from backup..."
+    cp -r "$LATEST_BACKUP"/* "/etc/enigma2/tvgarden/" 2>/dev/null || true
+    rm -rf "$LATEST_BACKUP"
+fi
+
+find "/tmp" -name "tvgarden_*" -type f -mtime +7 -delete 2>/dev/null || true
+
+echo ""
+echo "✅ TV Garden Plugin installed successfully!"
+echo "📺 Access it from: Main Menu → Plugins → TV Garden"
+echo "⚙�?  Configuration: /etc/enigma2/tvgarden/config.json"
+echo ""
+echo "To complete installation, restart Enigma2 GUI:"
+echo "  - reboot your receiver"
+echo ""
+
+if [ -f /usr/bin/enigma2.sh ]; then
+    echo "NOTE: Some features may require a GUI restart."
+fi
+
+exit 0
