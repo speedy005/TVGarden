@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 TV Garden Plugin - Update Manager
-Centralized update functions using existing updater.py
+
+Centralized update functions using PluginUpdater.
 """
+
 from Screens.MessageBox import MessageBox
 
 from .updater import PluginUpdater
@@ -12,125 +14,361 @@ from .. import _
 
 
 class UpdateManager:
-    """Centralized update manager using existing PluginUpdater"""
+    """Centralized update manager using PluginUpdater."""
+
+    # ==========================================================
+    # Check for updates
+    # ==========================================================
 
     @staticmethod
     def check_for_updates(session, status_label=None):
-        """Check for updates - unified function for both plugin and settings"""
-        print("UpdateManager.check_for_updates called")
+        """Check whether a newer TVGarden version is available."""
+
+        log.debug(
+            "UpdateManager.check_for_updates called",
+            module="UpdateManager"
+        )
 
         if status_label:
-            status_label.setText(_("Checking for updates..."))
+            status_label.setText(
+                _("Checking for updates...")
+            )
 
         try:
+
             updater = PluginUpdater()
-            print("PluginUpdater created successfully")
+
+            log.debug(
+                "PluginUpdater created successfully",
+                module="UpdateManager"
+            )
 
             def update_callback(result):
-                print("update_callback received result: %s" % result)
+
+                log.debug(
+                    "Update check callback result: %s"
+                    % result,
+                    module="UpdateManager"
+                )
+
+                # --------------------------------------------------
+                # Error
+                # --------------------------------------------------
 
                 if result is None:
+
                     if status_label:
-                        status_label.setText(_("Update check failed"))
+                        status_label.setText(
+                            _("Update check failed")
+                        )
+
                     session.open(
                         MessageBox,
-                        _("Could not check for updates. Check internet connection."),
-                        MessageBox.TYPE_ERROR)
+                        _(
+                            "Could not check for updates.\n\n"
+                            "Please check your internet connection."
+                        ),
+                        MessageBox.TYPE_ERROR
+                    )
 
-                elif result:
+                    return
+
+                # --------------------------------------------------
+                # Update available
+                # --------------------------------------------------
+
+                if result:
+
                     if status_label:
-                        status_label.setText(_("Update available!"))
-                    UpdateManager.ask_to_update(session, status_label, updater)
+                        status_label.setText(
+                            _("Update available!")
+                        )
 
-                else:
-                    if status_label:
-                        status_label.setText(_("Plugin is up to date"))
-                    session.open(MessageBox,
-                                 _("You have the latest version of TVGarden."),
-                                 MessageBox.TYPE_INFO)
+                    UpdateManager.ask_to_update(
+                        session,
+                        status_label,
+                        updater
+                    )
 
-            print("Calling updater.check_update()")
-            updater.check_update(update_callback)
+                    return
+
+                # --------------------------------------------------
+                # Already up to date
+                # --------------------------------------------------
+
+                if status_label:
+                    status_label.setText(
+                        _("Plugin is up to date")
+                    )
+
+                session.open(
+                    MessageBox,
+                    _(
+                        "You have the latest version "
+                        "of TVGarden."
+                    ),
+                    MessageBox.TYPE_INFO
+                )
+
+            log.debug(
+                "Calling PluginUpdater.check_update()",
+                module="UpdateManager"
+            )
+
+            updater.check_update(
+                update_callback
+            )
 
         except Exception as e:
-            print("Error in check_for_updates: %s" % str(e))
+
+            log.error(
+                "Error in check_for_updates: %s"
+                % e,
+                module="UpdateManager"
+            )
+
             if status_label:
-                status_label.setText(_("Update check error"))
-            session.open(MessageBox,
-                         _("Could not check for updates: %s") % str(e),
-                         MessageBox.TYPE_ERROR)
+                status_label.setText(
+                    _("Update check error")
+                )
+
+            session.open(
+                MessageBox,
+                _(
+                    "Could not check for updates:\n\n%s"
+                ) % str(e),
+                MessageBox.TYPE_ERROR
+            )
+
+    # ==========================================================
+    # Ask user
+    # ==========================================================
 
     @staticmethod
-    def ask_to_update(session, status_label=None, updater=None):
-        """Ask user if they want to update"""
+    def ask_to_update(
+        session,
+        status_label=None,
+        updater=None
+    ):
+        """Ask the user whether the update should be installed."""
+
+        log.debug(
+            "ask_to_update called",
+            module="UpdateManager"
+        )
+
         if updater is None:
             updater = PluginUpdater()
 
         def update_confirmed(result):
+
             log.debug(
-                "User update confirmation: %s" %
-                result, module="UpdateManager")
+                "User update confirmation: %s"
+                % result,
+                module="UpdateManager"
+            )
+
             if result:
-                UpdateManager.perform_update(session, status_label, updater)
-            elif status_label:
-                status_label.setText(_("Update cancelled"))
+
+                UpdateManager.perform_update(
+                    session,
+                    status_label,
+                    updater
+                )
+
+            else:
+
+                log.info(
+                    "User cancelled update",
+                    module="UpdateManager"
+                )
+
+                if status_label:
+                    status_label.setText(
+                        _("Update cancelled")
+                    )
 
         message = _(
-            "A new version is available!\n\nUpdate now?\n\n(Recommended to backup first)")
-        session.openWithCallback(update_confirmed,
-                                 MessageBox,
-                                 message,
-                                 MessageBox.TYPE_YESNO)
+            "A new version of TVGarden is available!\n\n"
+            "Do you want to update now?\n\n"
+            "A backup will be created automatically."
+        )
+
+        session.openWithCallback(
+            update_confirmed,
+            MessageBox,
+            message,
+            MessageBox.TYPE_YESNO
+        )
+
+    # ==========================================================
+    # Perform update
+    # ==========================================================
 
     @staticmethod
-    def perform_update(session, status_label=None, updater=None):
-        """Perform the update"""
+    def perform_update(
+        session,
+        status_label=None,
+        updater=None
+    ):
+        """Perform the TVGarden update."""
+
+        log.debug(
+            "UpdateManager.perform_update called",
+            module="UpdateManager"
+        )
+
         if updater is None:
             updater = PluginUpdater()
 
-        def update_progress(success, message):
-            log.debug("Update progress: success=%s, message=%s" %
-                      (success, message), module="UpdateManager")
-            if success:
-                if status_label:
-                    status_label.setText(_("Update successful!"))
+        if status_label:
+            status_label.setText(
+                _("Updating plugin... Please wait")
+            )
 
-                restart_msg = _(
-                    "%s\n\nRestart Enigma2 now for changes to take effect.") % message
+        def update_progress(
+            success,
+            message
+        ):
+
+            log.debug(
+                "Update result: success=%s, message=%s"
+                % (
+                    success,
+                    message
+                ),
+                module="UpdateManager"
+            )
+
+            # --------------------------------------------------
+            # Update successful
+            # --------------------------------------------------
+
+            if success:
+
+                log.info(
+                    "TVGarden update successful",
+                    module="UpdateManager"
+                )
+
+                if status_label:
+                    status_label.setText(
+                        _("Update successful!")
+                    )
+
+                restart_message = _(
+                    "%s\n\n"
+                    "Restart Enigma2 now for the "
+                    "changes to take effect?"
+                ) % message
+
                 session.openWithCallback(
-                    lambda result: UpdateManager.restart_enigma2(session, result),
+                    lambda result:
+                    UpdateManager.restart_enigma2(
+                        session,
+                        result
+                    ),
                     MessageBox,
-                    restart_msg,
+                    restart_message,
                     MessageBox.TYPE_YESNO
                 )
-            else:
-                if status_label:
-                    status_label.setText(_("Update failed"))
-                session.open(MessageBox,
-                             message,
-                             MessageBox.TYPE_ERROR)
 
-        if status_label:
-            status_label.setText(_("Updating plugin... Please wait"))
+                return
 
-        log.debug("Starting download_update()", module="UpdateManager")
-        updater.download_update(update_progress)
+            # --------------------------------------------------
+            # Update failed
+            # --------------------------------------------------
+
+            log.error(
+                "TVGarden update failed: %s"
+                % message,
+                module="UpdateManager"
+            )
+
+            if status_label:
+                status_label.setText(
+                    _("Update failed")
+                )
+
+            session.open(
+                MessageBox,
+                message,
+                MessageBox.TYPE_ERROR
+            )
+
+        log.debug(
+            "Starting PluginUpdater.download_update()",
+            module="UpdateManager"
+        )
+
+        updater.download_update(
+            update_progress
+        )
+
+    # ==========================================================
+    # Restart Enigma2
+    # ==========================================================
 
     @staticmethod
-    def restart_enigma2(session, result):
-        """Restart Enigma2 if user confirms"""
+    def restart_enigma2(
+        session,
+        result
+    ):
+        """Restart Enigma2 if the user confirms."""
+
         log.debug(
-            "Restart Enigma2 confirmation: %s" %
-            result, module="UpdateManager")
-        if result:
+            "Restart Enigma2 confirmation: %s"
+            % result,
+            module="UpdateManager"
+        )
+
+        if not result:
+
+            log.info(
+                "User chose not to restart Enigma2",
+                module="UpdateManager"
+            )
+
+            return
+
+        try:
+
+            log.info(
+                "Restarting Enigma2...",
+                module="UpdateManager"
+            )
+
+            from enigma import quitMainloop
+
+            # 3 = restart Enigma2 GUI
+            quitMainloop(3)
+
+        except Exception as e:
+
+            log.error(
+                "Failed to restart Enigma2: %s"
+                % e,
+                module="UpdateManager"
+            )
+
             try:
-                from enigma import quitMainloop
-                quitMainloop(3)  # 3 = Restart Enigma2
-                log.debug("Enigma2 restart initiated", module="UpdateManager")
-            except Exception as e:
+
+                session.open(
+                    MessageBox,
+                    _(
+                        "The update was installed successfully, "
+                        "but Enigma2 could not be restarted "
+                        "automatically.\n\n"
+                        "Please restart Enigma2 manually."
+                    ),
+                    MessageBox.TYPE_INFO
+                )
+
+            except Exception as message_error:
+
                 log.error(
-                    "Failed to restart Enigma2: %s" %
-                    e, module="UpdateManager")
-                session.open(MessageBox,
-                             _("Please restart Enigma2 manually."),
-                             MessageBox.TYPE_INFO)
+                    "Could not show restart error: %s"
+                    % message_error,
+                    module="UpdateManager"
+                )
+
