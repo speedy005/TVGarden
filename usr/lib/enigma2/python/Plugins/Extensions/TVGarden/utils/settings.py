@@ -76,7 +76,7 @@ class LogViewerScreen(TextBox):
             text=log_contents,
             title=_("TV Garden Logs"))
         self['title'] = StaticText(
-            "TV Garden %s | by Lululla" %
+            "TV Garden %s | by speedy005" %
             PLUGIN_VERSION)
         self["key_red"] = StaticText(_("Close"))
         self["actions"] = ActionMap(
@@ -163,7 +163,7 @@ class TVGardenSettings(ConfigListScreen, Screen):
         self["key_red"] = StaticText(_("Back"))
         self["key_green"] = StaticText(_("Save"))
         self['title'] = StaticText(
-            "TV Garden %s | by Lululla" %
+            "TV Garden %s | by speedy005" %
             PLUGIN_VERSION)
         self["status"] = StaticText(_("Set options"))
         self["actions"] = ActionMap(
