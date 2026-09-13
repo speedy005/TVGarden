@@ -11,7 +11,7 @@
 #
 # =========================================================
 
-VERSION="3.0"
+VERSION="3.1"
 
 REPO_OWNER="speedy005"
 REPO_NAME="TVGarden"
