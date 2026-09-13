@@ -3,7 +3,7 @@
 """
 TV Garden Plugin - Updater Module
 
-Updater for TVGarden.
+Update manager for TVGarden.
 
 Repository:
     https://github.com/speedy005/TVGarden
@@ -29,17 +29,17 @@ class PluginUpdater:
     """TVGarden plugin update manager"""
 
     # ==========================================================
-    # GitHub repository
+    # Repository information
     # ==========================================================
 
     REPO_OWNER = "speedy005"
     REPO_NAME = "TVGarden"
     REPO_BRANCH = "master"
 
-    # GitHub raw content
+    # GitHub URLs
     RAW_CONTENT = "https://raw.githubusercontent.com"
 
-    # Installer
+    # Installer URL
     INSTALLER_URL = (
         "%s/%s/%s/refs/heads/%s/installer.sh"
         % (
@@ -50,7 +50,7 @@ class PluginUpdater:
         )
     )
 
-    # GitHub repository URL
+    # Repository URL
     REPO_URL = (
         "https://github.com/%s/%s"
         % (
@@ -59,10 +59,7 @@ class PluginUpdater:
         )
     )
 
-    # ==========================================================
-    # Backup
-    # ==========================================================
-
+    # Backup directory
     BACKUP_DIR = "/tmp/tvgarden_backup"
 
     def __init__(self):
@@ -83,7 +80,7 @@ class PluginUpdater:
         )
 
         log.debug(
-            "Installer: %s"
+            "Installer URL: %s"
             % self.INSTALLER_URL,
             module="Updater"
         )
@@ -91,10 +88,14 @@ class PluginUpdater:
         # Create backup directory
         try:
             if not exists(self.BACKUP_DIR):
-                makedirs(self.BACKUP_DIR, mode=0o755)
+                makedirs(
+                    self.BACKUP_DIR,
+                    mode=0o755
+                )
         except Exception as e:
             log.error(
-                "Could not create backup directory: %s" % e,
+                "Could not create backup directory: %s"
+                % e,
                 module="Updater"
             )
 
@@ -106,7 +107,7 @@ class PluginUpdater:
         """
         Get latest version from installer.sh.
 
-        Expected installer format:
+        Expected format:
 
             version='2.7'
 
@@ -121,7 +122,7 @@ class PluginUpdater:
             installer_url = self.INSTALLER_URL
 
             log.debug(
-                "Checking latest version from: %s"
+                "Checking version from: %s"
                 % installer_url,
                 module="Updater"
             )
@@ -158,7 +159,7 @@ class PluginUpdater:
                 return None
 
             log.debug(
-                "installer.sh downloaded successfully (%d bytes)"
+                "installer.sh downloaded successfully: %d bytes"
                 % len(raw_content),
                 module="Updater"
             )
@@ -176,17 +177,18 @@ class PluginUpdater:
             ]
 
             for pattern in patterns:
+
                 match = search(
                     pattern,
-                    content,
-                    flags=0
+                    content
                 )
 
                 if match:
+
                     version = match.group(1)
 
                     log.info(
-                        "Latest TVGarden version found: %s"
+                        "Found latest version: %s"
                         % version,
                         module="Updater"
                     )
@@ -208,10 +210,11 @@ class PluginUpdater:
             )
 
             if fallback:
+
                 version = fallback.group(1)
 
                 log.info(
-                    "Fallback version found: %s"
+                    "Fallback found version: %s"
                     % version,
                     module="Updater"
                 )
@@ -226,6 +229,7 @@ class PluginUpdater:
             return None
 
         except Exception as e:
+
             log.error(
                 "Error getting latest version: %s"
                 % e,
@@ -235,44 +239,43 @@ class PluginUpdater:
             return None
 
         finally:
+
             if response:
+
                 try:
                     response.close()
                 except Exception:
                     pass
 
     # ==========================================================
-    # Version comparison
+    # Compare versions
     # ==========================================================
 
     def compare_versions(self, v1, v2):
         """
-        Compare two version strings.
+        Compare version strings.
 
         Returns:
-            1  -> v1 is newer
-            0  -> versions are equal
-           -1  -> v1 is older
+            1  = v1 is newer
+            0  = equal
+           -1  = v1 is older
         """
 
         try:
+
             if v1 is None or v2 is None:
                 return 0
 
-            v1 = str(v1)
-            v2 = str(v2)
-
-            # Keep only digits and dots
             v1_clean = sub(
                 r"[^\d.]",
                 "",
-                v1
+                str(v1)
             )
 
             v2_clean = sub(
                 r"[^\d.]",
                 "",
-                v2
+                str(v2)
             )
 
             if not v1_clean or not v2_clean:
@@ -293,7 +296,6 @@ class PluginUpdater:
             if not v1_parts or not v2_parts:
                 return 0
 
-            # Pad with zeros
             max_len = max(
                 len(v1_parts),
                 len(v2_parts)
@@ -307,17 +309,18 @@ class PluginUpdater:
                 max_len - len(v2_parts)
             )
 
-            for index in range(max_len):
+            for i in range(max_len):
 
-                if v1_parts[index] > v2_parts[index]:
+                if v1_parts[i] > v2_parts[i]:
                     return 1
 
-                if v1_parts[index] < v2_parts[index]:
+                if v1_parts[i] < v2_parts[i]:
                     return -1
 
             return 0
 
         except Exception as e:
+
             log.error(
                 "Version compare error: %s"
                 % e,
@@ -331,15 +334,7 @@ class PluginUpdater:
     # ==========================================================
 
     def check_update(self, callback=None):
-        """
-        Check whether a newer TVGarden version is available.
-
-        callback receives:
-
-            True   -> update available
-            False  -> already current
-            None   -> check failed
-        """
+        """Check if a newer TVGarden version is available."""
 
         log.debug(
             "PluginUpdater.check_update called",
@@ -347,6 +342,7 @@ class PluginUpdater:
         )
 
         try:
+
             latest = self.get_latest_version()
 
             log.debug(
@@ -362,6 +358,7 @@ class PluginUpdater:
             )
 
             if latest is None:
+
                 log.warning(
                     "Could not get latest version",
                     module="Updater"
@@ -372,12 +369,12 @@ class PluginUpdater:
 
                 return
 
-            comparison = self.compare_versions(
-                latest,
-                self.current_version
+            is_newer = (
+                self.compare_versions(
+                    latest,
+                    self.current_version
+                ) > 0
             )
-
-            is_newer = comparison > 0
 
             log.info(
                 "Version comparison: current=%s latest=%s update=%s"
@@ -393,6 +390,7 @@ class PluginUpdater:
                 callback(is_newer)
 
         except Exception as e:
+
             log.error(
                 "Error in check_update: %s"
                 % e,
@@ -407,10 +405,7 @@ class PluginUpdater:
     # ==========================================================
 
     def download_update(self, callback=None):
-        """
-        Create backup, run installer and restore backup if
-        the installer fails.
-        """
+        """Create backup and install the latest TVGarden version."""
 
         log.info(
             "Starting TVGarden update process...",
@@ -423,11 +418,11 @@ class PluginUpdater:
         try:
 
             # --------------------------------------------------
-            # Step 1: Backup
+            # Step 1 - Backup
             # --------------------------------------------------
 
             log.info(
-                "Step 1: Creating plugin backup...",
+                "Creating backup before update...",
                 module="Updater"
             )
 
@@ -437,22 +432,20 @@ class PluginUpdater:
                     "Failed to create backup. Update cancelled."
                 )
 
-                log.error(
-                    "Update cancelled because backup failed",
-                    module="Updater"
-                )
-
                 if callback:
-                    callback(False, message)
+                    callback(
+                        False,
+                        message
+                    )
 
                 return
 
             # --------------------------------------------------
-            # Step 2: Run installer
+            # Step 2 - Download and run installer
             # --------------------------------------------------
 
             log.info(
-                "Step 2: Running TVGarden installer...",
+                "Downloading and running TVGarden installer...",
                 module="Updater"
             )
 
@@ -472,11 +465,11 @@ class PluginUpdater:
             else:
 
                 # --------------------------------------------------
-                # Step 3: Restore backup
+                # Step 3 - Restore backup
                 # --------------------------------------------------
 
                 log.error(
-                    "Installer failed - attempting backup restore",
+                    "Installer failed. Restoring backup...",
                     module="Updater"
                 )
 
@@ -486,20 +479,10 @@ class PluginUpdater:
                         "Update failed. Restored from backup."
                     )
 
-                    log.info(
-                        "Backup restored successfully",
-                        module="Updater"
-                    )
-
                 else:
 
                     message = _(
                         "Update failed and backup restore also failed!"
-                    )
-
-                    log.error(
-                        "Backup restore failed",
-                        module="Updater"
                     )
 
         except Exception as e:
@@ -510,13 +493,8 @@ class PluginUpdater:
                 module="Updater"
             )
 
-            # Try to restore backup
             try:
-                if self.restore_backup():
-                    log.info(
-                        "Backup restored after exception",
-                        module="Updater"
-                    )
+                self.restore_backup()
             except BaseException:
                 pass
 
@@ -536,10 +514,13 @@ class PluginUpdater:
 
     def download_and_run_installer(self):
         """
-        Download installer.sh from the configured repository
-        and execute it with /bin/sh.
+        Download installer.sh from speedy005/TVGarden
+        and execute it locally.
 
-        Installer URL is always taken from INSTALLER_URL.
+        This avoids:
+            wget ... | /bin/sh
+
+        so the installer can be checked before execution.
         """
 
         installer_path = "/tmp/tvgarden-installer.sh"
@@ -557,11 +538,19 @@ class PluginUpdater:
                 module="Updater"
             )
 
+            # Remove old installer
+            try:
+                if exists(installer_path):
+                    import os
+                    os.remove(installer_path)
+            except Exception:
+                pass
+
             # --------------------------------------------------
-            # Download installer
+            # Download
             # --------------------------------------------------
 
-            download_command = (
+            cmd = (
                 'wget '
                 '--no-check-certificate '
                 '--timeout=30 '
@@ -575,48 +564,36 @@ class PluginUpdater:
                 )
             )
 
-            log.debug(
-                "Downloading installer with wget",
-                module="Updater"
-            )
-
             result = subprocess.call(
-                download_command,
+                cmd,
                 shell=True
             )
 
             if result != 0:
 
                 log.error(
-                    "Failed to download installer "
+                    "Installer download failed "
                     "(exit code: %d)"
                     % result,
                     module="Updater"
                 )
 
-                try:
-                    if exists(installer_path):
-                        shutil.rmtree(installer_path)
-                except Exception:
-                    pass
-
                 return False
 
             # --------------------------------------------------
-            # Verify downloaded file
+            # Verify file
             # --------------------------------------------------
 
             if not exists(installer_path):
 
                 log.error(
-                    "Installer file was not created",
+                    "Installer file does not exist after download",
                     module="Updater"
                 )
 
                 return False
 
             try:
-                installer_size = 0
 
                 with open(
                     installer_path,
@@ -625,68 +602,50 @@ class PluginUpdater:
 
                     installer_data = installer_file.read()
 
-                    installer_size = len(
-                        installer_data
-                    )
-
             except Exception as e:
 
                 log.error(
-                    "Could not read downloaded installer: %s"
+                    "Could not read installer: %s"
                     % e,
                     module="Updater"
                 )
 
                 return False
 
-            if installer_size < 100:
+            if len(installer_data) < 100:
 
                 log.error(
                     "Downloaded installer is too small: %d bytes"
-                    % installer_size,
+                    % len(installer_data),
                     module="Updater"
                 )
 
                 return False
 
             log.info(
-                "Installer downloaded successfully: %d bytes"
-                % installer_size,
+                "Installer downloaded: %d bytes"
+                % len(installer_data),
                 module="Updater"
             )
 
             # --------------------------------------------------
-            # Verify it looks like a shell script
+            # Basic shell-script validation
             # --------------------------------------------------
 
-            try:
+            if (
+                b"#!/bin/sh" not in installer_data[:512]
+                and
+                b"#!/bin/bash" not in installer_data[:512]
+            ):
 
-                with open(
-                    installer_path,
-                    "rb"
-                ) as installer_file:
-
-                    first_bytes = installer_file.read(
-                        512
-                    )
-
-                if (
-                    b"#!/bin/sh" not in first_bytes
-                    and
-                    b"#!/bin/bash" not in first_bytes
-                ):
-
-                    log.warning(
-                        "Downloaded installer does not contain "
-                        "a shell shebang",
-                        module="Updater"
-                    )
-
-            except Exception:
-                pass
+                log.warning(
+                    "Downloaded file does not contain "
+                    "a shell script header",
+                    module="Updater"
+                )
 
             # --------------------------------------------------
-            # Execute installer
+            # Execute
             # --------------------------------------------------
 
             log.info(
@@ -699,20 +658,10 @@ class PluginUpdater:
                 % installer_path
             )
 
-            log.debug(
-                "Executing installer: %s"
-                % command,
-                module="Updater"
-            )
-
             result = subprocess.call(
                 command,
                 shell=True
             )
-
-            # --------------------------------------------------
-            # Result
-            # --------------------------------------------------
 
             if result == 0:
 
@@ -744,14 +693,18 @@ class PluginUpdater:
         finally:
 
             # --------------------------------------------------
-            # Remove temporary installer
+            # Cleanup
             # --------------------------------------------------
 
             try:
 
                 if exists(installer_path):
+
                     import os
-                    os.remove(installer_path)
+
+                    os.remove(
+                        installer_path
+                    )
 
                     log.debug(
                         "Temporary installer removed",
@@ -803,7 +756,7 @@ class PluginUpdater:
                 return False
 
             log.info(
-                "Creating backup: %s"
+                "Creating backup to: %s"
                 % self.backup_path,
                 module="Updater"
             )
@@ -840,12 +793,10 @@ class PluginUpdater:
         try:
 
             if not self.backup_path:
-
                 log.error(
                     "No backup path available",
                     module="Updater"
                 )
-
                 return False
 
             if not exists(self.backup_path):
@@ -864,20 +815,12 @@ class PluginUpdater:
                 module="Updater"
             )
 
-            # Remove current plugin
             if exists(PLUGIN_PATH):
-
-                log.debug(
-                    "Removing current plugin: %s"
-                    % PLUGIN_PATH,
-                    module="Updater"
-                )
 
                 shutil.rmtree(
                     PLUGIN_PATH
                 )
 
-            # Restore backup
             shutil.copytree(
                 self.backup_path,
                 PLUGIN_PATH
@@ -902,7 +845,7 @@ class PluginUpdater:
 
 
 def perform_update(callback=None):
-    """Perform TVGarden update."""
+    """Perform a TVGarden update."""
 
     updater = PluginUpdater()
 
