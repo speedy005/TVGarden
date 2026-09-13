@@ -5,12 +5,12 @@
 ###########################################################
 #                                                         #
 #  TV Garden Plugin for Enigma2                           #
-#  Created by Enigma2 Developer Lulualla                  #
+#  Created by Enigma2 Developer speedy005                  #
 #  Based on TV Garden Project by Lululla                  #
-#  Data Source: Belfagor2005 fork                         #
+#  Data Source: speedy005 fork                         #
 #                                                         #
 #  Repository:                                            #
-#  https://github.com/Belfagor2005/tv-garden-channel-list #
+#  https://github.com/speedy005/tv-garden-channel-list #
 #                                                         #
 #  PLUGIN FEATURES:                                       #
 #  • Global: 150+ countries with flags                    #
@@ -96,7 +96,7 @@
 #                                                         #
 #  CREDITS & THANKS:                                      #
 #  • Original TV Garden concept: Lululla                  #
-#  • Repository fork & maintenance: Belfagor2005          #
+#  • Repository fork & maintenance: speedy005          #
 #  • Plugin development: TV Garden Team                   #
 #  • Performance optimization: Recent updates             #
 #  • Enigma2 community for testing & feedback             #
