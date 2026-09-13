@@ -1,9 +1,8 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: TVGarden\n"
 "POT-Creation-Date: 2025-12-15 21:02+0100\n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2026-09-13 18:25+0200\n"
 "Last-Translator: Masta2002\n"
 "Language-Team: lululla [ekekaz@gmail.com]\n"
 "Language: de\n"
@@ -20,26 +19,25 @@ msgstr ""
 "X-Poedit-SearchPath-4: utils\n"
 
 msgid "%d favorite channels"
-msgstr "%d Favoriten Kanäle"
+msgstr "%d Favoritenkanäle"
 
 msgid "%d favorites"
 msgstr "%d Favoriten"
 
-#, fuzzy
 msgid "(%d YouTube)"
-msgstr "(%d YouTube übersprungen)"
+msgstr "(%d YouTube)"
 
 msgid "(filtered %d problematic)"
-msgstr "(gefiltert %d problematisch)"
+msgstr "(%d problematische gefiltert)"
 
 msgid "(limited to first %d)"
-msgstr "(begrenzt auf das erste %d)"
+msgstr "(begrenzt auf die ersten %d)"
 
 msgid "(skipped %d YouTube)"
 msgstr "(%d YouTube übersprungen)"
 
 msgid "1 MB"
-msgstr ""
+msgstr "1 MB"
 
 msgid "10 results"
 msgstr "10 Ergebnisse"
@@ -47,19 +45,17 @@ msgstr "10 Ergebnisse"
 msgid "100 channels"
 msgstr "100 Kanäle"
 
-#, fuzzy
 msgid "100 results"
-msgstr "100 Kanäle"
+msgstr "100 Ergebnisse"
 
 msgid "1000 channels"
 msgstr "1000 Kanäle"
 
-#, fuzzy
 msgid "1000 results"
-msgstr "1000 Kanäle"
+msgstr "1000 Ergebnisse"
 
 msgid "2 MB"
-msgstr ""
+msgstr "2 MB"
 
 msgid "2000 channels"
 msgstr "2000 Kanäle"
@@ -67,15 +63,14 @@ msgstr "2000 Kanäle"
 msgid "250 channels"
 msgstr "250 Kanäle"
 
-#, fuzzy
 msgid "250 results"
-msgstr "250 Kanäle"
+msgstr "250 Ergebnisse"
 
 msgid "2500 results"
 msgstr "2500 Ergebnisse"
 
 msgid "4 MB"
-msgstr ""
+msgstr "4 MB"
 
 msgid "4000 results"
 msgstr "4000 Ergebnisse"
@@ -89,9 +84,8 @@ msgstr "50 Ergebnisse"
 msgid "500 channels"
 msgstr "500 Kanäle"
 
-#, fuzzy
 msgid "500 results"
-msgstr "500 Kanäle"
+msgstr "500 Ergebnisse"
 
 msgid "5000 channels"
 msgstr "5000 Kanäle"
@@ -100,10 +94,10 @@ msgid "5000 results"
 msgstr "5000 Ergebnisse"
 
 msgid "512 KB"
-msgstr ""
+msgstr "512 KB"
 
 msgid "8 MB"
-msgstr ""
+msgstr "8 MB"
 
 msgid "=== Browser Settings ==="
 msgstr "=== Browsereinstellungen ==="
@@ -112,10 +106,10 @@ msgid "=== Cache Settings ==="
 msgstr "=== Cache-Einstellungen ==="
 
 msgid "=== Export Settings ==="
-msgstr "=== Einstellungen exportieren ==="
+msgstr "=== Exporteinstellungen ==="
 
 msgid "=== Log Maintenance ==="
-msgstr "=== Protokollwartung ==="
+msgstr "=== Protokollverwaltung ==="
 
 msgid "=== Logging Settings ==="
 msgstr "=== Protokollierungseinstellungen ==="
@@ -133,7 +127,7 @@ msgid "=== Search Settings ==="
 msgstr "=== Sucheinstellungen ==="
 
 msgid "=== Update Settings ==="
-msgstr "=== Einstellungen aktualisieren ==="
+msgstr "=== Update-Einstellungen ==="
 
 msgid "About"
 msgstr "Über"
@@ -142,7 +136,7 @@ msgid "About TV Garden"
 msgstr "Über TV Garden"
 
 msgid "About TV Garden plugin"
-msgstr "Über TV Garden Plugin"
+msgstr "Über das TV Garden Plugin"
 
 msgid "Access free IPTV channels from around the world"
 msgstr "Greifen Sie auf kostenlose IPTV-Kanäle aus aller Welt zu"
@@ -151,7 +145,7 @@ msgid "Add to Favorites"
 msgstr "Zu Favoriten hinzufügen"
 
 msgid "Added to favorites"
-msgstr "Den Favoriten hinzugefügt"
+msgstr "Zu den Favoriten hinzugefügt"
 
 msgid "Added to favorites: %s"
 msgstr "Zu den Favoriten hinzugefügt: %s"
@@ -159,9 +153,8 @@ msgstr "Zu den Favoriten hinzugefügt: %s"
 msgid "All channels"
 msgstr "Alle Kanäle"
 
-#, fuzzy
 msgid "All results"
-msgstr "Alle Kanäle"
+msgstr "Alle Ergebnisse"
 
 msgid "Already in favorites"
 msgstr "Bereits in den Favoriten"
@@ -173,7 +166,7 @@ msgid "Are you sure you want to clear all log files?"
 msgstr "Sind Sie sicher, dass Sie alle Protokolldateien löschen möchten?"
 
 msgid "Auto"
-msgstr "Auto"
+msgstr "Automatisch"
 
 msgid "Back"
 msgstr "Zurück"
@@ -182,13 +175,13 @@ msgid "Bottom"
 msgstr "Unten"
 
 msgid "Bouquet Name Prefix"
-msgstr "Blumenstrauß-Namenspräfix"
+msgstr "Bouquet-Namenspräfix"
 
 msgid "Browse by Category"
-msgstr "Nach Kategorie suchen"
+msgstr "Nach Kategorie durchsuchen"
 
 msgid "Browse by Country"
-msgstr "Nach Land suchen"
+msgstr "Nach Land durchsuchen"
 
 msgid "Browse channels by category"
 msgstr "Kanäle nach Kategorie durchsuchen"
@@ -203,10 +196,10 @@ msgid "Business"
 msgstr "Geschäftlich"
 
 msgid "CH+/CH- = Change | OK = Toggle | STOP = Exit | by Lululla"
-msgstr "CH+/CH- = Veränderung | OK = Umschalten | STOP = Beenden | von Lululla"
+msgstr "CH+/CH- = Ändern | OK = Umschalten | STOP = Beenden | von Lululla"
 
 msgid "Cache Size"
-msgstr "Cache Größe"
+msgstr "Cachegröße"
 
 msgid "Cache cleared"
 msgstr "Cache geleert"
@@ -221,7 +214,7 @@ msgid "Channel Menu"
 msgstr "Kanalmenü"
 
 msgid "Channel added to bouquet"
-msgstr "Kanal zum Blumenstrauß hinzugefügt"
+msgstr "Kanal zum Bouquet hinzugefügt"
 
 msgid "Channel not found in favorites"
 msgstr "Kanal nicht in den Favoriten gefunden"
@@ -230,10 +223,10 @@ msgid "Channels"
 msgstr "Kanäle"
 
 msgid "Check for Updates"
-msgstr "Suchen Sie nach Updates"
+msgstr "Nach Updates suchen"
 
 msgid "Check for plugin updates"
-msgstr "Suchen Sie nach Plugin-Updates"
+msgstr "Nach Plugin-Updates suchen"
 
 msgid "Checking for updates..."
 msgstr "Suche nach Updates..."
@@ -275,7 +268,7 @@ msgid "Could not check for updates. Check internet connection."
 msgstr "Es konnte nicht nach Updates gesucht werden. Überprüfen Sie die Internetverbindung."
 
 msgid "Could not check for updates: %s"
-msgstr "Konnte nicht nach Updates suchen: %s"
+msgstr "Nach Updates konnte nicht gesucht werden: %s"
 
 msgid "Countries"
 msgstr "Länder"
@@ -284,7 +277,7 @@ msgid "Countries exported:"
 msgstr "Exportierte Länder:"
 
 msgid "Creating hierarchical structure..."
-msgstr "Erstellen einer hierarchischen Struktur..."
+msgstr "Hierarchische Struktur wird erstellt..."
 
 msgid "Critical"
 msgstr "Kritisch"
@@ -296,13 +289,13 @@ msgid "Database exported successfully"
 msgstr "Datenbank erfolgreich exportiert"
 
 msgid "Debug"
-msgstr "Debuggen"
+msgstr "Debug"
 
 msgid "Default View"
-msgstr "Standard Ansicht"
+msgstr "Standardansicht"
 
 msgid "Documentary"
-msgstr "Dokumentationen"
+msgstr "Dokumentation"
 
 msgid "Editing: %s"
 msgstr "Bearbeitung: %s"
@@ -317,10 +310,10 @@ msgid "Enable Cache"
 msgstr "Cache aktivieren"
 
 msgid "Enable Export"
-msgstr "Exportieren aktivieren"
+msgstr "Export aktivieren"
 
 msgid "Entertainment"
-msgstr "Entertainment"
+msgstr "Unterhaltung"
 
 msgid "Error"
 msgstr "Fehler"
@@ -335,11 +328,10 @@ msgid "Error loading category"
 msgstr "Fehler beim Laden der Kategorie"
 
 msgid "Error loading channels"
-msgstr "Fehler beim laden der Kanäle"
+msgstr "Fehler beim Laden der Kanäle"
 
-#, fuzzy
 msgid "Error loading channels: %s"
-msgstr "Fehler beim laden der Kanäle"
+msgstr "Fehler beim Laden der Kanäle: %s"
 
 msgid "Error loading countries"
 msgstr "Fehler beim Laden der Länder"
@@ -348,7 +340,7 @@ msgid "Error loading favorites"
 msgstr "Fehler beim Laden der Favoriten"
 
 msgid "Error loading information"
-msgstr "Fehler beim Laden der Information"
+msgstr "Fehler beim Laden der Informationen"
 
 msgid "Error opening player"
 msgstr "Fehler beim Öffnen des Players"
@@ -366,19 +358,19 @@ msgid "Exit"
 msgstr "Beenden"
 
 msgid "Export"
-msgstr ""
+msgstr "Exportieren"
 
 msgid "Export '%s' to Enigma2 bouquet?"
-msgstr "„%s“ in den Enigma2-Bouquet exportieren?"
+msgstr "„%s“ in das Enigma2-Bouquet exportieren?"
 
 msgid "Export ALL %d favorites to Enigma2 bouquet?"
-msgstr "ALLE %d Favoriten in den Enigma2-Bouquet exportieren?"
+msgstr "ALLE %d Favoriten in das Enigma2-Bouquet exportieren?"
 
 msgid "Export ALL Database (Multi-File)"
-msgstr "ALLE Datenbank exportieren (mehrere Dateien)"
+msgstr "GESAMTE Datenbank exportieren (mehrere Dateien)"
 
 msgid "Export ALL Database (Single File)"
-msgstr "ALLE Datenbank exportieren (einzelne Datei)"
+msgstr "GESAMTE Datenbank exportieren (eine Datei)"
 
 msgid "Export Current View"
 msgstr "Aktuelle Ansicht exportieren"
@@ -387,16 +379,16 @@ msgid "Export error: %s"
 msgstr "Exportfehler: %s"
 
 msgid "Export failed"
-msgstr "Der Export ist fehlgeschlagen"
+msgstr "Export fehlgeschlagen"
 
 msgid "Export failed: %s"
 msgstr "Export fehlgeschlagen: %s"
 
 msgid "Export to Enigma2 Bouquet"
-msgstr "Export nach Enigma2 Bouquet"
+msgstr "In Enigma2-Bouquet exportieren"
 
 msgid "Export {count} channels to bouquet '{name}'?"
-msgstr "{count} Kanäle in Bouquet „{name}“ exportieren?"
+msgstr "{count} Kanäle in das Bouquet „{name}“ exportieren?"
 
 msgid "Exported"
 msgstr "Exportiert"
@@ -408,7 +400,7 @@ msgid "Exported %d channels to '%s'"
 msgstr "%d Kanäle nach „%s“ exportiert"
 
 msgid "Exported %d channels to bouquet"
-msgstr "%d Kanäle nach Bouquet exportiert"
+msgstr "%d Kanäle in das Bouquet exportiert"
 
 msgid "ExtePlayer3"
 msgstr "ExtePlayer3"
@@ -435,7 +427,7 @@ msgid "Force Refresh"
 msgstr "Aktualisierung erzwingen"
 
 msgid "Force Refresh on Browsing"
-msgstr "Aktualisierung beim Surfen erzwingen"
+msgstr "Aktualisierung beim Durchsuchen erzwingen"
 
 msgid "Force Refresh on Export"
 msgstr "Aktualisierung beim Export erzwingen"
@@ -459,7 +451,7 @@ msgid "Hierarchical export completed!"
 msgstr "Hierarchischer Export abgeschlossen!"
 
 msgid "History"
-msgstr "Geschichte"
+msgstr "Verlauf"
 
 msgid "Hobby"
 msgstr "Hobby"
@@ -468,7 +460,7 @@ msgid "Info"
 msgstr "Info"
 
 msgid "Item {} of {}"
-msgstr "Artikel {} von {}"
+msgstr "Eintrag {} von {}"
 
 msgid "Keyboard"
 msgstr "Tastatur"
@@ -477,7 +469,7 @@ msgid "Kids"
 msgstr "Kinder"
 
 msgid "Legislative"
-msgstr "Legislative"
+msgstr "Gesetzgebung"
 
 msgid "Lifestyle"
 msgstr "Lifestyle"
@@ -485,36 +477,32 @@ msgstr "Lifestyle"
 msgid "List Position"
 msgstr "Listenposition"
 
-#, fuzzy
 msgid "Loading all channels in background..."
-msgstr "Lade Kanäle..."
+msgstr "Alle Kanäle werden im Hintergrund geladen..."
 
 msgid "Loading all channels..."
 msgstr "Alle Kanäle werden geladen..."
 
-#, fuzzy
 msgid "Loading already in progress..."
-msgstr "Lade Kategorien..."
+msgstr "Ladevorgang läuft bereits..."
 
 msgid "Loading categories..."
-msgstr "Lade Kategorien..."
+msgstr "Kategorien werden geladen..."
 
 msgid "Loading channels..."
-msgstr "Lade Kanäle..."
+msgstr "Kanäle werden geladen..."
 
 msgid "Loading countries..."
 msgstr "Länder werden geladen..."
 
-#, fuzzy
 msgid "Loading countries: %s (%d/%d)"
-msgstr "Länder werden geladen..."
+msgstr "Länder werden geladen: %s (%d/%d)"
 
 msgid "Loading favorites..."
 msgstr "Favoriten werden geladen..."
 
-#, fuzzy
 msgid "Loading... %d channels so far"
-msgstr "Lade Kanäle..."
+msgstr "Laden... bisher %d Kanäle"
 
 msgid "Local"
 msgstr "Lokal"
@@ -529,7 +517,7 @@ msgid "Log files cleared successfully"
 msgstr "Protokolldateien erfolgreich gelöscht"
 
 msgid "Log to File"
-msgstr "Protokoll in Datei"
+msgstr "In Datei protokollieren"
 
 msgid "Logs cleared"
 msgstr "Protokolle gelöscht"
@@ -538,16 +526,16 @@ msgid "Main bouquet:"
 msgstr "Hauptbouquet:"
 
 msgid "Max Channels for Bouquet"
-msgstr "Maximale Kanäle für Bouquet"
+msgstr "Maximale Kanäle pro Bouquet"
 
 msgid "Max Channels for Sub-Bouquet"
-msgstr "Maximale Kanäle für Sub-Bouquet"
+msgstr "Maximale Kanäle pro Unter-Bouquet"
 
 msgid "Max Search Results"
 msgstr "Maximale Suchergebnisse"
 
 msgid "Max channels for country"
-msgstr "Maximale Anzahl an Kanälen für das Land"
+msgstr "Maximale Anzahl der Kanäle pro Land"
 
 msgid "Memory Optimization"
 msgstr "Speicheroptimierung"
@@ -559,10 +547,10 @@ msgid "Music"
 msgstr "Musik"
 
 msgid "News"
-msgstr "News"
+msgstr "Nachrichten"
 
 msgid "Next load will use fresh data"
-msgstr "Beim nächsten Ladevorgang werden neue Daten verwendet"
+msgstr "Beim nächsten Laden werden aktuelle Daten verwendet"
 
 msgid "No channel selected"
 msgstr "Kein Kanal ausgewählt"
@@ -586,13 +574,13 @@ msgid "No country selected"
 msgstr "Kein Land ausgewählt"
 
 msgid "No favorite channels"
-msgstr "Keine Favoriten Kanäle"
+msgstr "Keine Favoritenkanäle"
 
 msgid "No favorites to export"
 msgstr "Keine Favoriten zum Exportieren"
 
 msgid "No items"
-msgstr "Keine Artikel"
+msgstr "Keine Einträge"
 
 msgid "No stream URL"
 msgstr "Keine Stream-URL"
@@ -601,7 +589,7 @@ msgid "No stream URL available"
 msgstr "Keine Stream-URL verfügbar"
 
 msgid "No valid channels found in database"
-msgstr "In der Datenbank wurden keine gültigen Kanäle gefunden"
+msgstr "Keine gültigen Kanäle in der Datenbank gefunden"
 
 msgid "No valid stream URLs found"
 msgstr "Keine gültigen Stream-URLs gefunden"
@@ -616,10 +604,10 @@ msgid "Options for: %s"
 msgstr "Optionen für: %s"
 
 msgid "Play"
-msgstr "Play"
+msgstr "Abspielen"
 
 msgid "Play Channel"
-msgstr "Spiele Kanal"
+msgstr "Kanal abspielen"
 
 msgid "Player"
 msgstr "Player"
@@ -648,9 +636,8 @@ msgstr "Drücken Sie OK, um die Protokolle zu löschen"
 msgid "Press OK to view logs"
 msgstr "Drücken Sie OK, um die Protokolle anzuzeigen"
 
-#, fuzzy
 msgid "Ready - %d channels"
-msgstr "Zeige {shown} von {total} Kanälen"
+msgstr "Bereit - %d Kanäle"
 
 msgid "Refresh"
 msgstr "Aktualisieren"
@@ -659,7 +646,7 @@ msgid "Refresh Method"
 msgstr "Aktualisierungsmethode"
 
 msgid "Refresh failed"
-msgstr "Refresh fehlgeschlagen"
+msgstr "Aktualisierung fehlgeschlagen"
 
 msgid "Refresh failed: %s"
 msgstr "Aktualisierung fehlgeschlagen: %s"
@@ -668,16 +655,16 @@ msgid "Refreshing data..."
 msgstr "Daten werden aktualisiert..."
 
 msgid "Refreshing..."
-msgstr "Aktualisierung…"
+msgstr "Aktualisierung..."
 
 msgid "Religious"
-msgstr "Religiös"
+msgstr "Religion"
 
 msgid "Remove '%s' from favorites?"
 msgstr "„%s“ aus den Favoriten entfernen?"
 
 msgid "Remove Bouquet from Enigma2"
-msgstr "Entfernen Sie Bouquet aus Enigma2"
+msgstr "Bouquet aus Enigma2 entfernen"
 
 msgid "Remove TV Garden bouquet from Enigma2?"
 msgstr "TV Garden Bouquet aus Enigma2 entfernen?"
@@ -686,10 +673,10 @@ msgid "Remove from Favorites"
 msgstr "Aus Favoriten entfernen"
 
 msgid "Removed"
-msgstr "ENTFERNT"
+msgstr "Entfernt"
 
 msgid "Removed from favorites"
-msgstr "Aus Favoriten entfernt"
+msgstr "Aus den Favoriten entfernt"
 
 msgid "Removed from favorites: %s"
 msgstr "Aus den Favoriten entfernt: %s"
@@ -704,10 +691,10 @@ msgid "Search"
 msgstr "Suche"
 
 msgid "Search Channels"
-msgstr "Suche Kanäle"
+msgstr "Kanäle suchen"
 
 msgid "Search channels by name"
-msgstr "Suche Kanäle per name"
+msgstr "Kanäle nach Namen suchen"
 
 msgid "Search:"
 msgstr "Suche:"
@@ -722,7 +709,7 @@ msgid "Select a category"
 msgstr "Kategorie auswählen"
 
 msgid "Select a country"
-msgstr "Wählen Sie ein Land"
+msgstr "Land auswählen"
 
 msgid "Series"
 msgstr "Serien"
@@ -737,14 +724,13 @@ msgid "Shop"
 msgstr "Shop"
 
 msgid "Show Flags"
-msgstr "Zeige Flaggen"
+msgstr "Flaggen anzeigen"
 
 msgid "Show Logos"
-msgstr "Zeige Logos"
+msgstr "Logos anzeigen"
 
-#, fuzzy
 msgid "Showing all %d channels"
-msgstr "Zeige {shown} von {total} Kanälen"
+msgstr "Alle %d Kanäle werden angezeigt"
 
 msgid "Showing {shown} of {total} channels"
 msgstr "Zeige {shown} von {total} Kanälen"
@@ -762,7 +748,7 @@ msgid "Stream: %s"
 msgstr "Stream: %s"
 
 msgid "Stream: %s..."
-msgstr ""
+msgstr "Stream: %s..."
 
 msgid "Structure created:"
 msgstr "Struktur erstellt:"
@@ -771,16 +757,16 @@ msgid "TV Garden"
 msgstr "TV Garden"
 
 msgid "TV Garden Logs"
-msgstr "TV Garden Logs"
+msgstr "TV Garden Protokolle"
 
 msgid "TV Garden Settings"
 msgstr "TV Garden Einstellungen"
 
 msgid "Top"
-msgstr "Spitze"
+msgstr "Oben"
 
 msgid "Total channels:"
-msgstr "Gesamtkanäle:"
+msgstr "Kanäle insgesamt:"
 
 msgid "Travel"
 msgstr "Reisen"
@@ -822,10 +808,10 @@ msgid "Updating plugin... Please wait"
 msgstr "Plugin wird aktualisiert... Bitte warten"
 
 msgid "Use Hardware Acceleration"
-msgstr "Verwenden Sie Hardwarebeschleunigung"
+msgstr "Hardwarebeschleunigung verwenden"
 
 msgid "User Agent"
-msgstr "User Agent"
+msgstr "User-Agent"
 
 msgid "View Channel Info"
 msgstr "Kanalinformationen anzeigen"
@@ -840,33 +826,35 @@ msgid "Weather"
 msgstr "Wetter"
 
 msgid "Will load fresh data next time"
-msgstr "Werde beim nächsten Mal neue Daten laden"
+msgstr "Beim nächsten Mal werden aktuelle Daten geladen"
 
 msgid "You have the latest version of TVGarden."
-msgstr "Sie haben die neueste Version von TVGarden."
+msgstr "Sie haben die neueste Version von TV Garden."
 
 msgid "Your favorite channels"
-msgstr "Deine Favoriten Kanäle"
+msgstr "Deine Favoritenkanäle"
 
-#, fuzzy
 msgid "[Cache disabled]"
-msgstr "Cache geleert"
+msgstr "[Cache deaktiviert]"
 
-#, fuzzy
 msgid "[Fresh data]"
-msgstr "Daten werden aktualisiert..."
+msgstr "[Aktuelle Daten]"
 
 msgid "bouquet references"
 msgstr "Bouquet-Referenzen"
 
 msgid "channels from"
-msgstr "Kanäle von"
+msgstr "Kanäle aus"
 
 msgid "countries"
 msgstr "Länder"
 
 msgid "files and"
 msgstr "Dateien und"
+
+# ==========================================================
+# Obsolete translations
+# ==========================================================
 
 #~ msgid "TV Garden Plugin"
 #~ msgstr "TV Garden Plugin"
@@ -896,16 +884,16 @@ msgstr "Dateien und"
 #~ msgstr "Einträge pro Seite"
 
 #~ msgid "Max Favorites"
-#~ msgstr "Max Favoriten"
+#~ msgstr "Maximale Favoriten"
 
 #~ msgid "Cache TTL (hours)"
-#~ msgstr "Cache TTL (Stunden)"
+#~ msgstr "Cache-TTL (Stunden)"
 
 #~ msgid "Max Log Size (MB)"
 #~ msgstr "Maximale Protokollgröße (MB)"
 
 #~ msgid "Log Backup Files"
-#~ msgstr "Protokollsicherungsdateien"
+#~ msgstr "Protokoll-Sicherungsdateien"
 
 #~ msgid "Refreshing cache..."
 #~ msgstr "Cache wird aktualisiert..."
@@ -917,13 +905,13 @@ msgstr "Dateien und"
 #~ msgstr "--- Protokollverwaltung ---"
 
 #~ msgid "Debug (most verbose)"
-#~ msgstr "Debuggen (sehr ausführlich)"
+#~ msgstr "Debug (sehr ausführlich)"
 
 #~ msgid "Info (normal)"
 #~ msgstr "Info (normal)"
 
 #~ msgid "Cache and metadata have been refreshed."
-#~ msgstr "Der Cache und die Metadaten wurden aktualisiert."
+#~ msgstr "Cache und Metadaten wurden aktualisiert."
 
 #~ msgid "Failed to refresh data. Check internet connection."
 #~ msgstr "Daten konnten nicht aktualisiert werden. Überprüfen Sie die Internetverbindung."
