@@ -152,7 +152,7 @@ def get_metadata_url():
 
 
 def get_country_url(country_code):
-    return "https://raw.githubusercontent.com/speddy005/famelack-data/main/tv/raw/countries/%s.json" % country_code.lower()
+    return "https://raw.githubusercontent.com/speedy005/famelack-data/main/tv/raw/countries/%s.json" % country_code.lower()
 
 
 def get_category_url(category_id):
