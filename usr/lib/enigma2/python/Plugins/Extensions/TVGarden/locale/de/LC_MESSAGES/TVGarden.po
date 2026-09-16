@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TVGarden\n"
 "POT-Creation-Date: 2025-12-15 21:02+0100\n"
-"PO-Revision-Date: 2026-09-13 18:25+0200\n"
+"PO-Revision-Date: 2026-09-16 17:39+0200\n"
 "Last-Translator: Masta2002\n"
-"Language-Team: lululla [ekekaz@gmail.com]\n"
+"Language-Team: lululla [[ekekaz@gmail.com](mailto:ekekaz@gmail.com)]\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: helpers.py\n"
@@ -153,11 +153,14 @@ msgstr "Zu den Favoriten hinzugefügt: %s"
 msgid "All channels"
 msgstr "Alle Kanäle"
 
+msgid "All Channels"
+msgstr "Alle Kanäle"
+
 msgid "All results"
 msgstr "Alle Ergebnisse"
 
 msgid "Already in favorites"
-msgstr "Bereits in den Favoriten"
+msgstr "Bereits in Favoriten"
 
 msgid "Animation"
 msgstr "Animation"
@@ -267,8 +270,22 @@ msgstr "Kochen"
 msgid "Could not check for updates. Check internet connection."
 msgstr "Es konnte nicht nach Updates gesucht werden. Überprüfen Sie die Internetverbindung."
 
+msgid "Could not check for updates.\n"
+"\n"
+"Please check your internet connection."
+msgstr "Updates konnten nicht geprüft werden.\n"
+"\n"
+"Bitte überprüfen Sie Ihre Internetverbindung."
+
 msgid "Could not check for updates: %s"
 msgstr "Nach Updates konnte nicht gesucht werden: %s"
+
+msgid "Could not check for updates:\n"
+"\n"
+"%s"
+msgstr "Updates konnten nicht geprüft werden:\n"
+"\n"
+"%s"
 
 msgid "Countries"
 msgstr "Länder"
@@ -555,6 +572,9 @@ msgstr "Beim nächsten Laden werden aktuelle Daten verwendet"
 msgid "No channel selected"
 msgstr "Kein Kanal ausgewählt"
 
+msgid "No channels"
+msgstr "Keine Kanäle"
+
 msgid "No channels found for: %s"
 msgstr "Keine Kanäle gefunden für: %s"
 
@@ -597,11 +617,20 @@ msgstr "Keine gültigen Stream-URLs gefunden"
 msgid "No valid streams found"
 msgstr "Keine gültigen Streams gefunden"
 
+msgid "1 channel"
+msgstr "1 Kanal"
+
+msgid "%d channels"
+msgstr "%d Kanäle"
+
 msgid "Options"
 msgstr "Optionen"
 
 msgid "Options for: %s"
 msgstr "Optionen für: %s"
+
+msgid "Outdoor"
+msgstr "Outdoor"
 
 msgid "Play"
 msgstr "Abspielen"
@@ -616,7 +645,7 @@ msgid "Please restart Enigma2 manually."
 msgstr "Bitte starten Sie Enigma2 manuell neu."
 
 msgid "Plugin is up to date"
-msgstr "Plugin ist aktuell"
+msgstr "Das Plugin ist auf dem neuesten Stand"
 
 msgid "Plugin settings and configuration"
 msgstr "Plugin-Einstellungen und Konfiguration"
@@ -635,6 +664,9 @@ msgstr "Drücken Sie OK, um die Protokolle zu löschen"
 
 msgid "Press OK to view logs"
 msgstr "Drücken Sie OK, um die Protokolle anzuzeigen"
+
+msgid "Public"
+msgstr "Öffentlich"
 
 msgid "Ready - %d channels"
 msgstr "Bereit - %d Kanäle"
@@ -656,6 +688,9 @@ msgstr "Daten werden aktualisiert..."
 
 msgid "Refreshing..."
 msgstr "Aktualisierung..."
+
+msgid "Relax"
+msgstr "Entspannung"
 
 msgid "Religious"
 msgstr "Religion"
@@ -720,8 +755,8 @@ msgstr "Optionen festlegen"
 msgid "Settings"
 msgstr "Einstellungen"
 
-msgid "Shop"
-msgstr "Shop"
+msgid "Show"
+msgstr "Show"
 
 msgid "Show Flags"
 msgstr "Flaggen anzeigen"
@@ -733,10 +768,10 @@ msgid "Showing all %d channels"
 msgstr "Alle %d Kanäle werden angezeigt"
 
 msgid "Showing {shown} of {total} channels"
-msgstr "Zeige {shown} von {total} Kanälen"
+msgstr "{shown} von {total} Kanälen werden angezeigt"
 
 msgid "Showing {shown} of {total} results"
-msgstr "Zeige {shown} von {total} Ergebnissen"
+msgstr "{shown} von {total} Ergebnissen werden angezeigt"
 
 msgid "Sports"
 msgstr "Sport"
@@ -765,6 +800,9 @@ msgstr "TV Garden Einstellungen"
 msgid "Top"
 msgstr "Oben"
 
+msgid "Top News"
+msgstr "Top-Nachrichten"
+
 msgid "Total channels:"
 msgstr "Kanäle insgesamt:"
 
@@ -781,10 +819,10 @@ msgid "Update cancelled"
 msgstr "Update abgebrochen"
 
 msgid "Update check error"
-msgstr "Fehler bei der Aktualisierungsprüfung"
+msgstr "Fehler bei der Update-Prüfung"
 
 msgid "Update check failed"
-msgstr "Die Aktualisierungsprüfung ist fehlgeschlagen"
+msgstr "Update-Prüfung fehlgeschlagen"
 
 msgid "Update completed successfully!"
 msgstr "Update erfolgreich abgeschlossen!"
@@ -804,6 +842,17 @@ msgstr "Update fehlgeschlagen. Aus Backup wiederhergestellt."
 msgid "Update successful!"
 msgstr "Update erfolgreich!"
 
+msgid "A new version of TVGarden is available!\n"
+"\n"
+"Do you want to update now?\n"
+"\n"
+"A backup will be created automatically."
+msgstr "Eine neue Version von TVGarden ist verfügbar!\n"
+"\n"
+"Möchten Sie jetzt aktualisieren?\n"
+"\n"
+"Ein Backup wird automatisch erstellt."
+
 msgid "Updating plugin... Please wait"
 msgstr "Plugin wird aktualisiert... Bitte warten"
 
@@ -822,6 +871,9 @@ msgstr "Protokolldatei anzeigen"
 msgid "Warning"
 msgstr "Warnung"
 
+msgid "Webcam"
+msgstr "Webcam"
+
 msgid "Weather"
 msgstr "Wetter"
 
@@ -829,10 +881,10 @@ msgid "Will load fresh data next time"
 msgstr "Beim nächsten Mal werden aktuelle Daten geladen"
 
 msgid "You have the latest version of TVGarden."
-msgstr "Sie haben die neueste Version von TV Garden."
+msgstr "Sie haben die neueste Version von TVGarden."
 
-msgid "Your favorite channels"
-msgstr "Deine Favoritenkanäle"
+msgid "You have the latest version of TVGarden."
+msgstr "Sie haben die neueste Version von TVGarden."
 
 msgid "[Cache disabled]"
 msgstr "[Cache deaktiviert]"
@@ -855,7 +907,6 @@ msgstr "Dateien und"
 # ==========================================================
 # Obsolete translations
 # ==========================================================
-
 #~ msgid "TV Garden Plugin"
 #~ msgstr "TV Garden Plugin"
 
@@ -927,98 +978,3 @@ msgstr "Dateien und"
 
 #~ msgid "Clear All"
 #~ msgstr "Alles löschen"
-
-
-msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Language: de\n"
-
-msgid "Checking for updates..."
-msgstr "Suche nach Updates..."
-
-msgid "Update check failed"
-msgstr "Update-Prüfung fehlgeschlagen"
-
-msgid ""
-"Could not check for updates.\n"
-"\n"
-"Please check your internet connection."
-msgstr ""
-"Updates konnten nicht geprüft werden.\n"
-"\n"
-"Bitte überprüfe deine Internetverbindung."
-
-msgid "Update available!"
-msgstr "Update verfügbar!"
-
-msgid "Plugin is up to date"
-msgstr "Das Plugin ist auf dem neuesten Stand"
-
-msgid ""
-"You have the latest version "
-"of TVGarden."
-msgstr ""
-"Du hast die neueste Version "
-"von TVGarden."
-
-msgid "Update check error"
-msgstr "Fehler bei der Update-Prüfung"
-
-msgid ""
-"Could not check for updates:\n"
-"\n"
-"%s"
-msgstr ""
-"Updates konnten nicht geprüft werden:\n"
-"\n"
-"%s"
-
-msgid "Update cancelled"
-msgstr "Update abgebrochen"
-
-msgid ""
-"A new version of TVGarden is available!\n"
-"\n"
-"Do you want to update now?\n"
-"\n"
-"A backup will be created automatically."
-msgstr ""
-"Eine neue Version von TVGarden ist verfügbar!\n"
-"\n"
-"Möchtest du jetzt aktualisieren?\n"
-"\n"
-"Ein Backup wird automatisch erstellt."
-
-msgid "Updating plugin... Please wait"
-msgstr "Plugin wird aktualisiert... Bitte warten"
-
-msgid "Update successful!"
-msgstr "Update erfolgreich!"
-
-msgid ""
-"%s\n"
-"\n"
-"Restart Enigma2 now for the "
-"changes to take effect?"
-msgstr ""
-"%s\n"
-"\n"
-"Enigma2 jetzt neu starten, damit "
-"die Änderungen wirksam werden?"
-
-msgid "Update failed"
-msgstr "Update fehlgeschlagen"
-
-msgid ""
-"The update was installed successfully, "
-"but Enigma2 could not be restarted "
-"automatically.\n"
-"\n"
-"Please restart Enigma2 manually."
-msgstr ""
-"Das Update wurde erfolgreich installiert, "
-"aber Enigma2 konnte nicht automatisch "
-"neu gestartet werden.\n"
-"\n"
-"Bitte starte Enigma2 manuell neu."
