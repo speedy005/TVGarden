@@ -144,7 +144,7 @@ IMAGES_PATH = join(PLUGIN_PATH, "images", RESOLUTION_TYPE)
 DEFAULT_SKIN_PATH = join(PLUGIN_PATH, "skin", "hd")
 DEFAULT_IMAGES_PATH = join(PLUGIN_PATH, "images", "hd")
 
-REPO_BASE = "https://raw.githubusercontent.com/speedy005/famelack-data/main"
+REPO_BASE = "https://raw.githubusercontent.com/speedy005/famelack-data/refs/heads/main"
 
 
 def get_metadata_url():
@@ -152,15 +152,15 @@ def get_metadata_url():
 
 
 def get_country_url(country_code):
-    return "https://raw.githubusercontent.com/speedy005/famelack-data/main/tv/raw/countries/%s.json" % country_code.lower()
+    return "https://raw.githubusercontent.com/speedy005/famelack-data/refs/heads/main/tv/raw/countries/%s.json" % country_code.lower()
 
 
 def get_category_url(category_id):
-    return "https://raw.githubusercontent.com/speedy005/famelack-data/main/tv/raw/categories/%s.json" % category_id
+    return "https://raw.githubusercontent.com/speedy005/famelack-data/refs/heads/main/tv/raw/categories/%s.json" % category_id
 
 
 def get_categories_url():
-    return "https://api.github.com/repos/speedy005/famelack-data/contents/tv/raw/categories"
+    return "https://raw.githubusercontent.com/speedy005/famelack-data/refs/heads/main/tv/raw/categories"
 
 
 def get_all_channels_url():
