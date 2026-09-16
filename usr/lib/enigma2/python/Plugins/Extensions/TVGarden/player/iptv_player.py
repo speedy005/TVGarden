@@ -167,7 +167,7 @@ class TvInfoBarShowHide():
         try:
             # Controls text
             controls = _(
-                "CH+/CH- = Change | OK = Toggle | STOP = Exit | by Lululla")
+                "CH+/CH- = Change | OK = Toggle | STOP = Exit | by speedy005")
 
             # Get channel info
             channel_info = self.get_current_channel_info()
@@ -193,7 +193,7 @@ class TvInfoBarShowHide():
 
     def show_help_overlay(self):
         help_text = (
-            "OK = Info | CH-/CH+ = Prev/Next | PLAY/PAUSE = Toggle | STOP = Stop | EXIT = Exit | by Lululla"
+            "OK = Info | CH-/CH+ = Prev/Next | PLAY/PAUSE = Toggle | STOP = Stop | EXIT = Exit | by speedy005"
         )
         self["helpOverlay"].setText(help_text)
         self["helpOverlay"].show()
