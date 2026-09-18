@@ -174,7 +174,7 @@ class FavoritesManager:
         return results
 
     def _create_bouquet_files(self):
-        """Create actual bouquet files - LULULLA STYLE"""
+        """Create actual bouquet files - speedy005 STYLE"""
         try:
             bouquet_name = "TVGarden"
             tag = "tvgarden"
@@ -182,11 +182,11 @@ class FavoritesManager:
                 tag, bouquet_name)
 
             with open(userbouquet_file, "w") as f:
-                # LULULLA STYLE HEADER
-                f.write("#NAME TV Garden Favorites by Lululla\n")
+                # speedy005 STYLE HEADER
+                f.write("#NAME TV Garden Favorites by speedy005\n")
                 f.write(
-                    "#SERVICE 1:64:0:0:0:0:0:0:0:0:::--- | TV Garden Favorites by Lululla | ---\n")
-                f.write("#DESCRIPTION --- | TV Garden Favorites by Lululla | ---\n")
+                    "#SERVICE 1:64:0:0:0:0:0:0:0:0:::--- | TV Garden Favorites by speedy005 | ---\n")
+                f.write("#DESCRIPTION --- | TV Garden Favorites by speedy005 | ---\n")
 
                 for idx, channel in enumerate(self.favorites, 1):
                     name = channel.get('name', 'Channel %d' % idx)
@@ -254,10 +254,10 @@ class FavoritesManager:
                 f = open(userbouquet_file, "w")
 
                 # Write header
-                f.write("#NAME TV Garden Favorites by Lululla\n")
+                f.write("#NAME TV Garden Favorites by speedy005\n")
                 f.write(
-                    "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | TV Garden Favorites by Lululla | ---\n")
-                f.write("#DESCRIPTION --- | TV Garden Favorites by Lululla | ---\n")
+                    "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | TV Garden Favorites by speedy005 | ---\n")
+                f.write("#DESCRIPTION --- | TV Garden Favorites by speedy005 | ---\n")
 
                 valid_count = 0
 
@@ -357,11 +357,11 @@ class FavoritesManager:
             try:
                 f = open(userbouquet_file, "w")
                 try:
-                    f.write("#NAME TV Garden Favorites by Lululla\n")
+                    f.write("#NAME TV Garden Favorites by speedy005\n")
                     f.write(
-                        "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | TV Garden Favorites by Lululla | ---\n")
+                        "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | TV Garden Favorites by speedy005 | ---\n")
                     f.write(
-                        "#DESCRIPTION --- | TV Garden Favorites by Lululla | ---\n")
+                        "#DESCRIPTION --- | TV Garden Favorites by speedy005 | ---\n")
 
                     valid_count = 0
 
@@ -587,12 +587,12 @@ class FavoritesManager:
 
             # Write the bouquet file organized by country
             with open(userbouquet_file, "w") as f:
-                f.write("#NAME %s - TV Garden All by Lululla\n" % prefix)
+                f.write("#NAME %s - TV Garden All by speedy005\n" % prefix)
                 f.write(
-                    "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | %s TV Garden by Lululla | ---\n" %
+                    "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | %s TV Garden by speedy005 | ---\n" %
                     prefix)
                 f.write(
-                    "#DESCRIPTION --- | %s TV Garden by Lululla | ---\n"
+                    "#DESCRIPTION --- | %s TV Garden by speedy005 | ---\n"
                     % prefix
                 )
 
@@ -819,7 +819,7 @@ class FavoritesManager:
             return False, _("Error: %s") % str(e)
 
     def export_single_channel(self, channel, bouquet_name=None):
-        """Export a single channel to bouquet - LULULLA STYLE"""
+        """Export a single channel to bouquet - speedy005 STYLE"""
         try:
             tag = "tvgarden"
 
@@ -843,13 +843,13 @@ class FavoritesManager:
             file_mode = "a" if file_exists else "w"
 
             with open(userbouquet_file, file_mode) as f:
-                # If creating a new file, add Lululla-style header
+                # If creating a new file, add speedy005-style header
                 if file_mode == "w":
                     f.write("#NAME TV Garden Favorites\n")
                     f.write(
-                        "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | TV Garden Favorites by Lululla | ---\n")
+                        "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | TV Garden Favorites by speedy005 | ---\n")
                     f.write(
-                        "#DESCRIPTION --- | TV Garden Favorites by Lululla | ---\n")
+                        "#DESCRIPTION --- | TV Garden Favorites by speedy005 | ---\n")
 
                 # Add channel
                 url_encoded = stream_url.replace(":", "%3a")
@@ -1038,7 +1038,7 @@ class FavoritesManager:
 
             # Write the single sub-bouquet
             with open(sub_path, 'w') as f:
-                f.write("#NAME %s by Lululla\n" % country)
+                f.write("#NAME %s by speedy005\n" % country)
                 f.write(
                     "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- %s ---\n" %
                     country)
@@ -1098,7 +1098,7 @@ class FavoritesManager:
                 # Write the sub-bouquet
                 with open(sub_path, 'w') as f:
                     f.write(
-                        "#NAME %s - Part %d by Lululla\n" %
+                        "#NAME %s - Part %d by speedy005\n" %
                         (country, chunk_num + 1)
                     )
                     f.write(
@@ -1154,7 +1154,7 @@ class FavoritesManager:
         container_path = join(ENIGMA_PATH, container_name)
 
         with open(container_path, 'w') as f:
-            f.write("#NAME TV Garden - Complete Database by Lululla\n")
+            f.write("#NAME TV Garden - Complete Database by speedy005\n")
             f.write(
                 "#SERVICE 1:64:0:0:0:0:0:0:0:0::--- | TV Garden Complete Database | ---\n")
             f.write("#DESCRIPTION --- | TV Garden Complete Database | ---\n")
