@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 TV Garden Plugin - Helpers Module
-Based on TV Garden Project by Lululla
+Based on TV Garden Project by speedy005
 Data Source: TV Garden Project
 """
 from sys import stderr

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 # Copyright (c) @Lululla 2026
+# mod by speedy005
 # Google Translate API for Foreca One Weather Plugin
 
 import hashlib

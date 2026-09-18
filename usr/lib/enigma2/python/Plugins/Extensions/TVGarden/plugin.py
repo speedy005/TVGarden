@@ -138,7 +138,7 @@ if plugin_path not in path:
     path.insert(0, plugin_path)
 
 
-simple_log("START PLUGIN TVGARDEN BY LULULLA - TEST")
+simple_log("START PLUGIN TVGARDEN BY speedy005 - TEST")
 
 MODULES_LOADED = False
 MODULES_LOADED = all([

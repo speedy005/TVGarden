@@ -4,6 +4,7 @@
 ##############################################################################
 Generic Translation Management Script for Enigma2 Plugins
 Created by: Lululla
+mod by speedy005
 Integrates Google Translate auto-translation for missing strings
 ##############################################################################
 Last Updated: 2026-05-27
