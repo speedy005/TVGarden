@@ -63,7 +63,7 @@ class TVGardenAbout(Screen):
         self.skin = dynamic_skin
         Screen.__init__(self, session)
         self['title'] = StaticText(
-            "TV Garden %s | by Lululla" %
+            "TV Garden %s | by speedy005" %
             PLUGIN_VERSION)
         self["scrolltext"] = ScrollLabel()
         self["version"] = StaticText("")
@@ -262,7 +262,7 @@ class TVGardenAbout(Screen):
             Maintained by Belfagor2005
 
             ━━━━━━━━━━━━━━━━━ CREDITS ━━━━━━━━━━━━━━━━━━━━━━
-            • Original Concept: Lululla
+            • Original Concept: speedy005
             • Data Source: Belfagor2005
             • Plugin Development: TV Garden Team
             • Enigma2 Community for Testing & Feedback

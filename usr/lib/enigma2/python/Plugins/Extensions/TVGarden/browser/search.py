@@ -99,7 +99,7 @@ class SearchBrowser(BaseBrowser):
         except BaseException:
             self.key_timer.callback.append(self.finishKeyInput)
         self['title'] = StaticText(
-            "TV Garden %s | by Lululla" %
+            "TV Garden %s | by speedy005" %
             PLUGIN_VERSION)
         self["search_label"] = StaticText(_("Search:"))
         self["search_text"] = StaticText("")

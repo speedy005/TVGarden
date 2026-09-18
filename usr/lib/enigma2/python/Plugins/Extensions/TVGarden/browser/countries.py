@@ -90,7 +90,7 @@ class CountriesBrowser(BaseBrowser):
         self["menu"] = MenuList([], enableWrapAround=True)
         self["menu"].onSelectionChanged.append(self.onSelectionChanged)
         self['title'] = StaticText(
-            "TV Garden %s | by Lululla" %
+            "TV Garden %s | by speedy005" %
             PLUGIN_VERSION)
         self["status"] = StaticText(_("Loading countries..."))
         self["flag"] = Pixmap()

@@ -83,7 +83,7 @@ class FavoritesBrowser(BaseBrowser):
         self.current_channel = None
         self["menu"] = MenuList([])
         self['title'] = StaticText(
-            "TV Garden %s | by Lululla" %
+            "TV Garden %s | by speedy005" %
             PLUGIN_VERSION)
         self["status"] = StaticText(_("Loading favorites..."))
         self["key_red"] = StaticText(_("Back"))
